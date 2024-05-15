@@ -10,6 +10,9 @@ import { PacienteService } from '../Paciente.service';
 export class PacienteListComponent implements OnInit {
   pacientes: Array<Paciente> = [];
   menores: number = 0;
+
+  selectedPaciente!: Paciente; 
+  selected : Boolean = false;
   constructor(private pacienteService:PacienteService) { }
 
   getPacientes(): void {
@@ -24,6 +27,10 @@ export class PacienteListComponent implements OnInit {
       }
       
     })
+  }
+  onSelected(book: Paciente): void {
+    this.selected = true;
+    this.selectedPaciente = book;
   }
   ngOnInit() {
     this.getPacientes();

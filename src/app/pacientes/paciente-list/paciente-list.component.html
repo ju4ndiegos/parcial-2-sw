@@ -1,3 +1,7 @@
+<div *ngIf="selected">
+  <app-paciente-detail [pacienteDetail]="selectedPaciente"></app-paciente-detail>
+ </div>
+
 <div class="container-fluid">
   <h1>Pacientes</h1>
   <table class="table table-striped">
@@ -8,9 +12,13 @@
       </tr>
     </thead>
     <tbody>
+
     <tr *ngFor="let paciente of pacientes">
       <td>{{paciente.nombre}}</td>
       <td>{{paciente.edad}}</td>
+      <img
+      (click)="onSelected(paciente)"
+      >
     </tr>
   </tbody>
   </table>
