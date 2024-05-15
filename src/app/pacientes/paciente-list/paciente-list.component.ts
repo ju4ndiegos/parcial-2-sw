@@ -9,11 +9,20 @@ import { PacienteService } from '../Paciente.service';
 })
 export class PacienteListComponent implements OnInit {
   pacientes: Array<Paciente> = [];
+  menores: number = 0;
   constructor(private pacienteService:PacienteService) { }
 
   getPacientes(): void {
     this.pacienteService.getPacientes().subscribe((pacientes)=> {
       this.pacientes =pacientes;
+      
+      for (let i=0; i<pacientes.length;i++){
+        if (pacientes[i].edad<18){
+          this.menores++;
+        }
+
+      }
+      
     })
   }
   ngOnInit() {
